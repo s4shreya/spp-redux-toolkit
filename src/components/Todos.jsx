@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import { deleteTodo } from "../features/todo/todoSlice";
+import styles from "./Todos.module.css";
 
 function Todos() {
   const todos = useSelector((state) => state.todos);
@@ -12,17 +13,17 @@ function Todos() {
   //   };
 
   return (
-    <>
-      <div>Todos</div>
+    <div className={styles.todos}>
+      <div className={styles.title}>Todos</div>
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div key={todo.id} className={styles.todo}>
           <p>{todo.text}</p>
           <button type="button" onClick={() => dispatch(deleteTodo(todo.id))}>
             Delete
           </button>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

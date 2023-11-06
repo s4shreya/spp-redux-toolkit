@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { addTodo } from "../features/todo/todoSlice";
+import styles from "./AddTodo.module.css";
 
 const AddTodo = () => {
   const [inputTask, setInputTask] = useState("");
@@ -18,12 +19,13 @@ const AddTodo = () => {
   };
 
   return (
-    <form onSubmit={addTodoHandler}>
+    <form onSubmit={addTodoHandler} className={styles.form}>
       <input
         type="text"
         placeholder="Enter task..."
         name="todo"
         value={inputTask}
+        required
         onChange={onTaskChangeHandler}
       />
       <button type="submit">Add Task</button>
